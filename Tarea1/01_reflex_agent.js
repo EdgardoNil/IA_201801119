@@ -10,13 +10,14 @@ function reflexAgent(location, state) {
 
 function test(states) {
     let stateCounter = 0;
+    let log = "";
 
     function simulate() {
         if (stateCounter < 8) {
             let location = states[0];
             let state = (location === 'A') ? states[1] : states[2];
             let action = reflexAgent(location, state);
-            console.log("Location: " + location + " | Action: " + action);
+            log += "Location: " + location + " | Action: " + action + "<br>";
 
             if (action === "CLEAN") {
                 if (location === 'A') {
@@ -31,6 +32,7 @@ function test(states) {
             }
 
             stateCounter++;
+            document.getElementById('log').innerHTML = log;
             setTimeout(simulate, 3000); // Esperar 3 segundos antes de continuar
         }
     }
